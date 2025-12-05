@@ -4,7 +4,7 @@ import { Input } from './ui/input';
 import { motion } from 'motion/react';
 import { AuroraBackground } from './ui/aurora-background';
 
-export default function StartPage({ setUsername, onSearch }: { setUsername: (username: string) => void; onSearch: () => void }) {
+export default function StartPage({ username, setUsername, onSearch }: { username: string; setUsername: (username: string) => void; onSearch: () => void }) {
   const [hovered, setHovered] = useState(false);
   const hoveredRef = useRef(false);
   const swapTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -50,7 +50,7 @@ export default function StartPage({ setUsername, onSearch }: { setUsername: (use
 
         <div className="flex flex-row items-center gap-2 ">
           <Input className="text-2xl! h-12! text-foreground!" placeholder="username" name="username" autoComplete="off" onChange={(e) => setUsername(e.target.value)} />
-          <Button size="xl" className="cursor-pointer" onClick={onSearch}>
+          <Button size="xl" className="cursor-pointer" onClick={onSearch} disabled={!username}>
             show me
           </Button>
         </div>
