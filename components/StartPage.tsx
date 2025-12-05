@@ -4,7 +4,7 @@ import { Input } from './ui/input';
 import { motion } from 'motion/react';
 import { AuroraBackground } from './ui/aurora-background';
 
-export default function StartPage({ setUsername }: { setUsername: (username: string) => void }) {
+export default function StartPage({ setUsername, onSearch }: { setUsername: (username: string) => void; onSearch: () => void }) {
   const [hovered, setHovered] = useState(false);
   const hoveredRef = useRef(false);
   const swapTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -43,14 +43,14 @@ export default function StartPage({ setUsername }: { setUsername: (username: str
             transition={{ duration: 0.8, ease: 'easeInOut' }}
             className="inline-block align-baseline"
           >
-            {show2025 ? '2025' : 'year'}
+            {show2025 ? process.env.NEXT_PUBLIC_WRAPPED_YEAR : 'year'}
           </motion.span>{' '}
           in code.
         </div>
 
         <div className="flex flex-row items-center gap-2 ">
           <Input className="text-2xl! h-12! text-foreground!" placeholder="username" name="username" autoComplete="off" onChange={(e) => setUsername(e.target.value)} />
-          <Button size="xl" className="cursor-pointer">
+          <Button size="xl" className="cursor-pointer" onClick={onSearch}>
             show me
           </Button>
         </div>
