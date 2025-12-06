@@ -2,6 +2,8 @@
 import Cursor from '@/components/Cursor';
 import KeepScrollingContainer from '@/components/KeepScrollingContainer';
 import StartPage from '@/components/StartPage';
+import TotalsContainer from '@/components/TotalsContainer';
+import type { Data } from '@/lib/types';
 import axios from 'axios';
 import { LenisRef, ReactLenis } from 'lenis/react';
 import { useRef, useState } from 'react';
@@ -9,7 +11,7 @@ import { toast } from 'sonner';
 
 export default function Home() {
   const [username, setUsername] = useState('');
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<null | Data>(null);
   const [isScrollEnabled, setIsScrollEnabled] = useState(false);
   const startRef = useRef(null);
   const lenisRef = useRef<LenisRef>(null);
@@ -65,6 +67,7 @@ export default function Home() {
         <>
           <div className="h-[50vh]" />
           <KeepScrollingContainer startRef={startRef} />
+          {data && <TotalsContainer data={data} setIsActive={setIsActive} />}
           <div className="h-[200vh]" />
         </>
       )}

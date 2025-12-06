@@ -167,3 +167,7 @@ html.lenis body {
   transition-duration: 1ms;
   transition-behavior: allow-discrete;
 }
+
+.text-stroke-2 {
+  -webkit-text-stroke: 2px var(--foreground);
+}
