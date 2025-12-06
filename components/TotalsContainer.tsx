@@ -1,5 +1,5 @@
 import { Data } from '@/lib/types';
-import { motion, MotionValue, useMotionTemplate, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
+import { motion, MotionValue, useMotionTemplate, useScroll, useTransform } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
 export default function TotalsContainer({ data, setIsActive }: { data: Data; setIsActive: (isActive: boolean) => void }) {
@@ -9,26 +9,22 @@ export default function TotalsContainer({ data, setIsActive }: { data: Data; set
 
   const [offset, setOffset] = useState(500);
 
-  const { scrollYProgress: scrollYProgressParent } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: parentRef,
     offset: ['start end', 'end end'],
   });
 
-  useMotionValueEvent(scrollYProgressParent, 'change', (latest) => {
-    console.log(latest);
-  });
+  const ySmallText2 = useTransform(scrollYProgress, [0, 0.33], [700, 0]);
+  const opacitySmallText2 = useTransform(scrollYProgress, [0.2, 0.33], [0, 1]);
+  const ySmallText = useTransform(scrollYProgress, [0, 0.33], [500, 0]);
+  const opacitySmallText = useTransform(scrollYProgress, [0.15, 0.33], [0, 1]);
+  const yBigText = useTransform(scrollYProgress, [0, 0.33], [300, 0]);
 
-  const ySmallText2 = useTransform(scrollYProgressParent, [0, 0.33], [700, 0]);
-  const opacitySmallText2 = useTransform(scrollYProgressParent, [0.2, 0.33], [0, 1]);
-  const ySmallText = useTransform(scrollYProgressParent, [0, 0.33], [500, 0]);
-  const opacitySmallText = useTransform(scrollYProgressParent, [0.15, 0.33], [0, 1]);
-  const yBigText = useTransform(scrollYProgressParent, [0, 0.33], [300, 0]);
-
-  const xCenter = useTransform(scrollYProgressParent, [0.33, 0.66], [0, -offset]);
-  const xSide = useTransform(scrollYProgressParent, [0.33, 0.66], [offset, 0]);
-  const yCenter = useTransform(scrollYProgressParent, [0.66, 1], [0, -200]);
-  const ySide = useTransform(scrollYProgressParent, [0.66, 1], [0, -500]);
-  const opacity = useTransform(scrollYProgressParent, [0.33, 0.66], [0, 1]);
+  const xCenter = useTransform(scrollYProgress, [0.33, 0.66], [0, -offset]);
+  const xSide = useTransform(scrollYProgress, [0.33, 0.66], [offset, 0]);
+  const yCenter = useTransform(scrollYProgress, [0.66, 1], [0, -200]);
+  const ySide = useTransform(scrollYProgress, [0.66, 1], [0, -500]);
+  const opacity = useTransform(scrollYProgress, [0.33, 0.66], [0, 1]);
 
   const transformSmallText = useMotionTemplate`translateY(${ySmallText}px)`;
   const transformSmallText2 = useMotionTemplate`translateY(${ySmallText2}px)`;
@@ -102,7 +98,7 @@ export default function TotalsContainer({ data, setIsActive }: { data: Data; set
               { name: 'editor', value: data.totalEditors, valueLastYear: data.totalEditorsLastYear },
               { name: 'host', value: data.totalHosts, valueLastYear: data.totalHostsLastYear },
             ].map((item, index, arr) => (
-              <SplitItem key={index} scrollYProgressParent={scrollYProgressParent} item={item} index={index} arr={arr} totalDuration={data.totalDuration} setIsActive={setIsActive} />
+              <SplitItem key={index} scrollYProgress={scrollYProgress} item={item} index={index} arr={arr} totalDuration={data.totalDuration} setIsActive={setIsActive} />
             ))}
           </div>
         </motion.div>
@@ -112,14 +108,14 @@ export default function TotalsContainer({ data, setIsActive }: { data: Data; set
 }
 
 function SplitItem({
-  scrollYProgressParent,
+  scrollYProgress,
   item,
   index,
   arr,
   totalDuration,
   setIsActive,
 }: {
-  scrollYProgressParent: MotionValue<number>;
+  scrollYProgress: MotionValue<number>;
   item: {
     name: string;
     value: number;
@@ -132,8 +128,8 @@ function SplitItem({
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const y = useTransform(scrollYProgressParent, [0.33, 0.66], [20 * (index + 1), 0]);
-  const opacity = useTransform(scrollYProgressParent, [0.45, 0.66], [(arr.length + 1 - index + 1) / (arr.length + 1), 1]);
+  const y = useTransform(scrollYProgress, [0.33, 0.66], [20 * (index + 1), 0]);
+  const opacity = useTransform(scrollYProgress, [0.45, 0.66], [(arr.length + 1 - index + 1) / (arr.length + 1), 1]);
   const transform = useMotionTemplate`translateY(${y}px)`;
 
   return (

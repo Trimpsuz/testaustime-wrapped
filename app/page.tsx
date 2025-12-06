@@ -58,18 +58,18 @@ export default function Home() {
       root
       ref={lenisRef}
       options={{
-        prevent: !isScrollEnabled,
+        anchors: !isScrollEnabled, //sick hack
         lerp: 0.05,
       }}
     >
       <StartPage username={username} setUsername={setUsername} onSearch={onSearch} setIsActive={setIsActive} />
       {isScrollEnabled && (
-        <>
+        <div className="overflow-clip">
           <div className="h-[50vh]" />
           <KeepScrollingContainer startRef={startRef} />
           {data && <TotalsContainer data={data} setIsActive={setIsActive} />}
           <div className="h-[200vh]" />
-        </>
+        </div>
       )}
       <Cursor isActive={isActive} />
     </ReactLenis>
