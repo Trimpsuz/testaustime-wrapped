@@ -1,6 +1,7 @@
 'use client';
 import Cursor from '@/components/Cursor';
 import KeepScrollingContainer from '@/components/KeepScrollingContainer';
+import LanguagesContainer from '@/components/LanguagesContainer';
 import StartPage from '@/components/StartPage';
 import TotalsContainer from '@/components/TotalsContainer';
 import type { Data } from '@/lib/types';
@@ -67,8 +68,12 @@ export default function Home() {
         <div className="overflow-clip">
           <div className="h-[50vh]" />
           <KeepScrollingContainer startRef={startRef} />
-          {data && <TotalsContainer data={data} setIsActive={setIsActive} />}
-          <div className="h-[200vh]" />
+          {data && (
+            <>
+              <TotalsContainer data={data} setIsActive={setIsActive} />
+              <LanguagesContainer data={data} setIsActive={setIsActive} />
+            </>
+          )}
         </div>
       )}
       <Cursor isActive={isActive} />
