@@ -63,9 +63,29 @@ export default function LanguagesContainer({ data, setIsActive }: { data: Data; 
     'text-background',
   ];
 
+  const length = useTransform(scrollYProgress, [0.15, 0.75], [0, 1]);
+
   return (
     <motion.div className="h-[400vh] relative" ref={parentRef} style={{ transform: transformParent }}>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div className="top-1/2 left-1/2 h-full w-full">
+          <svg className="w-full h-full" viewBox="0 0 1920 676" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3c709d" />
+                <stop offset="100%" stopColor="#22416c" />
+              </linearGradient>
+            </defs>
+            <motion.path
+              d="M-35.1,307.8c-8.1-42.5,16.1-86.3,50.9-112,34.8-25.7,78.4-36.2,121.3-42.1,18.6-2.5,37.8-4.3,55.8.9,19.3,5.5,35.4,18.5,51,31.2,32,26,63.9,52,95.9,77.9,28.5,23.1,58.9,47.2,95.2,52.4,64.9,9.3,120.4-42.8,166.6-89.3,69.4-69.9,143.8-137.1,232.1-180.7s193-61.6,286.4-30.1c77.9,26.3,143.2,86.7,177,161.6s36.1,163.1,7.9,240.3c-41.5,113.5-145.6,197.3-261.1,232.5-115.6,35.2-241.1,26-357.6-6.2-40.9-11.3-82.2-26.1-114-54.3-31.8-28.3-51.6-68.3-61.4-109.7-22.6-94.6,7.2-201.5,80.1-265.8,72.7-64.2,152.8-125.2,245.1-155,92.3-29.8,203.7-20.7,272.3,47.8,32.9,32.8,53.4,76.5,65.2,121.4,25.7,97.6,12.2,203.3-27.9,295.8-17,39.3-39.3,77.3-71.6,105.5-35.5,30.9-82.8,48.5-129.8,45.9s-92.9-26.1-120.7-64c-20-27.3-30.2-60.4-38.8-93.1-12.7-48.5-22.4-98.3-21.2-148.4,2.3-89.8,40.4-176,94.1-247.9,37.6-50.3,88.1-97.2,150.5-103.9,51.5-5.5,101.7,17.6,145.3,45.5,58.2,37.3,111.8,86.7,137,151,25.2,64.4,15.8,145.5-35.8,191.4-28.3,25.2-66.9,33.5-102.3,47.1-173.5,66.7-280.2,56.6-434.9,10.6-48.2-14.3-99.1-25-138.7-56-10.6-8.3-20.5-17.9-26-30.2-5.5-12.2-6.1-26.1-5.4-39.5,4.8-95.9,69.3-181.6,151-232.1,81.6-50.5,178.5-70.5,274.1-80.1,67.6-6.8,136.5-8.7,203.1,5.1,36.9,7.7,74.3,10,107.1,28.5,49.2,27.8,79.3,82.1,128.8,109.4,14.1,7.8,30.7,13.2,46.1,8.6,9.9-3,18.2-9.7,25.8-16.7,37.3-33.8,73.1-77.5,123.3-81.8,4.4-.4,9.2-.3,12.9,2.1,4,2.6,5.9,7.4,7.6,11.9,12.9,32.9,31.4,65.1,60.5,85.1,37.5,25.7,87,27.3,131.4,17.5,44.4-9.8,85.7-29.8,128.6-44.8,88.4-30.7,182.6-39.6,275.8-48.3"
+              stroke="url(#gradient)"
+              strokeLinecap="round"
+              fill="none"
+              strokeWidth="3"
+              pathLength={length}
+            />
+          </svg>
+        </div>
         <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-nowrap text-xl" style={{ transform: transformText, fontSize }}>
           you used <span className="font-bold">{data.totalLanguages}</span> language{data.totalLanguages > 1 ? 's' : '. variety is overrated'}
           {data.totalLanguages > 1 && (sortedLanguages[0].duration / sortedLanguages[1].duration >= 2 ? '. one was overwhelmingly your favorite.' : ' and kept them balanced.')}
