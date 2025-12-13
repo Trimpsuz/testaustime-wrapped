@@ -231,6 +231,8 @@ const FlippableCard = ({
     }
   });
 
+  //FIXME: the 3d looks like shit on firefox for some reason fuck my fucking chungus life
+
   return (
     <motion.div
       ref={ref}
@@ -253,7 +255,7 @@ const FlippableCard = ({
     >
       <motion.div className="relative w-full h-full" style={{ perspective: 1000 }}>
         <motion.div
-          className="absolute inset-0"
+          className="absolute backface-hidden inset-0"
           initial={false}
           animate={{
             rotateY: scrollTreshold && hovered ? -180 * direction : 0,
@@ -271,7 +273,7 @@ const FlippableCard = ({
             transformStyle: 'preserve-3d',
           }}
         >
-          <div className="absolute inset-0 backface-hidden" style={{ backfaceVisibility: 'hidden' }}>
+          <div className="absolute inset-0 backface-hidden">
             <div className="flex flex-col items-center justify-between bg-foreground w-full h-full rounded-xl">
               <div className="w-full">
                 <CardContent i={i} sortedLanguages={sortedLanguages} cardNumberStyles={cardNumberStyles} data={data} sortedLanguagesLastYear={sortedLanguagesLastYear} />
@@ -281,13 +283,7 @@ const FlippableCard = ({
               </div>
             </div>
           </div>
-          <div
-            className="absolute inset-0 rotate-y-180 backface-hidden"
-            style={{
-              transform: 'rotateY(180deg)',
-              backfaceVisibility: 'hidden',
-            }}
-          >
+          <div className="absolute inset-0 rotate-y-180 backface-hidden">
             <div className="flex flex-col gap-2 items-center justify-start w-full h-full bg-foreground text-background rounded-xl py-4 px-6">
               <h1 className={`text-5xl font-bold ${cardNumberStyles[5 - (i + 1)]}`}>
                 {Big(sortedLanguages[5 - (i + 1)].duration / 60 / 60 / 24)
