@@ -1,4 +1,5 @@
 'use client';
+import AgeContainer from '@/components/AgeContainer';
 import Cursor from '@/components/Cursor';
 import KeepScrollingContainer from '@/components/KeepScrollingContainer';
 import LanguagesContainer from '@/components/LanguagesContainer';
@@ -72,6 +73,8 @@ export default function Home() {
             <>
               <TotalsContainer data={data} setIsActive={setIsActive} />
               <LanguagesContainer data={data} setIsActive={setIsActive} />
+              <AgeContainer data={data} />
+              <div className="h-[200vh]" />
             </>
           )}
         </div>
