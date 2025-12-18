@@ -5,18 +5,9 @@ import { Input } from './ui/input';
 import { motion } from 'motion/react';
 import { AuroraBackground } from './ui/aurora-background';
 import useWindowDimensions from '@/lib/hooks/useWindowDimensions';
+import dynamic from 'next/dynamic';
 
-export default function StartPage({
-  username,
-  setUsername,
-  onSearch,
-  setIsActive,
-}: {
-  username: string;
-  setUsername: (username: string) => void;
-  onSearch: () => void;
-  setIsActive: (isActive: boolean) => void;
-}) {
+function StartPage({ username, setUsername, onSearch, setIsActive }: { username: string; setUsername: (username: string) => void; onSearch: () => void; setIsActive: (isActive: boolean) => void }) {
   const { width } = useWindowDimensions();
 
   const [hovered, setHovered] = useState(false);
@@ -105,3 +96,7 @@ export default function StartPage({
     </AuroraBackground>
   );
 }
+
+export default dynamic(() => Promise.resolve(StartPage), {
+  ssr: false,
+});
