@@ -3,6 +3,7 @@ import AgeContainer from '@/components/AgeContainer';
 import Cursor from '@/components/Cursor';
 import KeepScrollingContainer from '@/components/KeepScrollingContainer';
 import LanguagesContainer from '@/components/LanguagesContainer';
+import ProjectsContainer from '@/components/ProjectsContainer';
 import StartPage from '@/components/StartPage';
 import TotalsContainer from '@/components/TotalsContainer';
 import type { Data } from '@/lib/types';
@@ -74,6 +75,7 @@ export default function Home() {
               <TotalsContainer data={data} setIsActive={setIsActive} />
               <LanguagesContainer data={data} setIsActive={setIsActive} />
               <AgeContainer data={data} />
+              <ProjectsContainer data={data} setIsActive={setIsActive} />
               <div className="h-[200vh]" />
             </>
           )}

@@ -37,7 +37,7 @@ export default function AgeContainer({ data }: { data: Data }) {
         </svg>
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
-        <motion.div className="text-4xl text-foreground">we estimated your age as</motion.div>
+        <motion.div className="text-4xl font-semibold text-foreground">we estimated your age as</motion.div>
         <motion.div style={{ transform: middleTransform }} className="font-[Special_Gothic_Expanded_One] text-[12rem] text-stroke-2 tracking-tight text-[#398FD9]">
           {getEstimatedAge(data.languages, data.totalDuration)}
         </motion.div>
