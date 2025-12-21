@@ -2,6 +2,7 @@
 import ActivityClocksContainer from '@/components/ActivityClocksContainer';
 import AgeContainer from '@/components/AgeContainer';
 import Cursor from '@/components/Cursor';
+import EndContainer from '@/components/EndContainer';
 import KeepScrollingContainer from '@/components/KeepScrollingContainer';
 import LanguagesContainer from '@/components/LanguagesContainer';
 import ProjectsContainer from '@/components/ProjectsContainer';
@@ -78,7 +79,7 @@ export default function Home() {
               <AgeContainer data={data} />
               <ProjectsContainer data={data} setIsActive={setIsActive} />
               <ActivityClocksContainer data={data} setIsActive={setIsActive} />
-              <div className="h-[200vh]" />
+              <EndContainer setIsActive={setIsActive} />
             </>
           )}
         </div>
