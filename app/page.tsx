@@ -1,4 +1,5 @@
 'use client';
+import ActivityClocksContainer from '@/components/ActivityClocksContainer';
 import AgeContainer from '@/components/AgeContainer';
 import Cursor from '@/components/Cursor';
 import KeepScrollingContainer from '@/components/KeepScrollingContainer';
@@ -9,7 +10,7 @@ import TotalsContainer from '@/components/TotalsContainer';
 import type { Data } from '@/lib/types';
 import axios from 'axios';
 import { LenisRef, ReactLenis } from 'lenis/react';
-import { useRef, useState } from 'react';
+import { Activity, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 export default function Home() {
@@ -76,6 +77,7 @@ export default function Home() {
               <LanguagesContainer data={data} setIsActive={setIsActive} />
               <AgeContainer data={data} />
               <ProjectsContainer data={data} setIsActive={setIsActive} />
+              <ActivityClocksContainer data={data} setIsActive={setIsActive} />
               <div className="h-[200vh]" />
             </>
           )}

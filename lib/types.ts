@@ -101,7 +101,7 @@ export type Data = {
   totalHostsLastYear: number;
   activityClocks: {
     day: number[];
-    month: number[];
+    week: number[];
     year: number[];
   };
 };
