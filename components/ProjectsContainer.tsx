@@ -111,8 +111,10 @@ function ProjectContainer({
     >
       <div className={`font-bold text-2xl flex flex-row items-center justify-between ${selectedProjectIndex && topProjectIndex === index ? 'text-background' : 'text-foreground'}`}>
         {project.project_name}
-        {selectedProjectIndex && selectedProjectIndex !== topProjectIndex && selectedProjectIndex === index && <X color="#e23636" />}
-        {selectedProjectIndex && topProjectIndex === index && <Check />}
+        <div>
+          {selectedProjectIndex && selectedProjectIndex !== topProjectIndex && selectedProjectIndex === index ? <X color="#e23636" /> : null}
+          {selectedProjectIndex && topProjectIndex === index ? <Check /> : null}
+        </div>
       </div>
       <div className={`font-medium text-lg ${selectedProjectIndex && topProjectIndex === index ? 'text-background' : 'text-foreground/85'}`}>
         {prettifyProgrammingLanguageName(project.top_language?.language).toLowerCase()}, {project.top_editor?.editor_name.toLowerCase()}, {project.top_host?.hostname.toLowerCase()}

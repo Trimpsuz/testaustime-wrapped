@@ -11,7 +11,7 @@ import TotalsContainer from '@/components/TotalsContainer';
 import type { Data } from '@/lib/types';
 import axios from 'axios';
 import { LenisRef, ReactLenis } from 'lenis/react';
-import { Activity, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 export default function Home() {
