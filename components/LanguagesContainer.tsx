@@ -290,7 +290,7 @@ const FlippableCard = ({
                   .round(1)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
-                hours
+                days
               </h1>
               <div className="text-2xl font-medium text-background/95">
                 {sortedLanguages[5 - (i + 1)].duration_last_year ? (
