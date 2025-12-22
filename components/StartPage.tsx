@@ -59,7 +59,7 @@ function StartPage({ username, setUsername, onSearch, setIsActive }: { username:
           in code.
         </div>
 
-        {width > 1850 && /Chrome/.test(navigator.userAgent) ? (
+        {width > 1850 ? (
           <div className="flex flex-row items-center gap-2">
             <Input
               onMouseOver={() => {

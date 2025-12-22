@@ -231,8 +231,6 @@ const FlippableCard = ({
     }
   });
 
-  //FIXME: the 3d looks like shit on firefox for some reason fuck my fucking chungus life
-
   return (
     <motion.div
       ref={ref}
@@ -253,11 +251,12 @@ const FlippableCard = ({
       className={`absolute ${translate} w-1/6 aspect-2/3 drop-shadow-sm`}
       style={{ zIndex: i, transform: cardTransforms[i] }}
     >
-      <motion.div className="relative w-full h-full" style={{ perspective: 1000 }}>
+      <motion.div className="relative w-full h-full">
         <motion.div
           className="absolute backface-hidden inset-0"
           initial={false}
           animate={{
+            transformPerspective: "1000px",
             rotateY: scrollTreshold && hovered ? -180 * direction : 0,
           }}
           transition={{
