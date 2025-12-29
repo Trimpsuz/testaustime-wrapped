@@ -256,7 +256,7 @@ const FlippableCard = ({
           className="absolute backface-hidden inset-0"
           initial={false}
           animate={{
-            transformPerspective: "1000px",
+            transformPerspective: '1000px',
             rotateY: scrollTreshold && hovered ? -180 * direction : 0,
           }}
           transition={{
