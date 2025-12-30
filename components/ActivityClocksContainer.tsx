@@ -3,37 +3,7 @@ import { Data } from '@/lib/types';
 import Big from 'big.js';
 import { motion, useMotionTemplate, useScroll, useTransform } from 'motion/react';
 import { memo, useMemo, useRef } from 'react';
-
-const dayLabels = [
-  '00:00 – 01:00',
-  '01:00 – 02:00',
-  '02:00 – 03:00',
-  '03:00 – 04:00',
-  '04:00 – 05:00',
-  '05:00 – 06:00',
-  '06:00 – 07:00',
-  '07:00 – 08:00',
-  '08:00 – 09:00',
-  '09:00 – 10:00',
-  '10:00 – 11:00',
-  '11:00 – 12:00',
-  '12:00 – 13:00',
-  '13:00 – 14:00',
-  '14:00 – 15:00',
-  '15:00 – 16:00',
-  '16:00 – 17:00',
-  '17:00 – 18:00',
-  '18:00 – 19:00',
-  '19:00 – 20:00',
-  '20:00 – 21:00',
-  '21:00 – 22:00',
-  '22:00 – 23:00',
-  '23:00 – 24:00',
-];
-
-const weekLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-const yearLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+import { dayLabels, weekLabels, yearLabels } from '../lib/utils';
 
 export default function ActivityClocksContainer({ data, setIsActive }: { data: Data; setIsActive: (isActive: boolean) => void }) {
   const parentRef = useRef(null);

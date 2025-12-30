@@ -1,8 +1,12 @@
 import { motion, useMotionTemplate, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { Button } from './ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Share2 } from 'lucide-react';
+import type { Data } from '@/lib/types';
+import SvgToPng from './SvgToPng';
 
-export default function EndContainer({ setIsActive }: { setIsActive: (isActive: boolean) => void }) {
+export default function EndContainer({ data, setIsActive }: { data: Data; setIsActive: (isActive: boolean) => void }) {
   const parentRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -37,6 +41,28 @@ export default function EndContainer({ setIsActive }: { setIsActive: (isActive: 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center flex-col gap-4">
         <div className="text-foreground text-6xl font-extrabold">that&apos;s {process.env.NEXT_PUBLIC_WRAPPED_YEAR} all wrapped up</div>
         <div className="text-foreground/90 text-2xl font-medium">hope you enjoyed</div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              onMouseOver={() => {
+                setIsActive(true);
+              }}
+              onMouseLeave={() => {
+                setIsActive(false);
+              }}
+              size="xl"
+              className="cursor-pointer"
+            >
+              <Share2 />
+              share
+            </Button>
+          </DialogTrigger>
+          <DialogContent setIsActive={setIsActive}>
+            <DialogTitle className="invisible">share</DialogTitle>
+            <SvgToPng svgString={data.imageBase64!} alt="share image" setIsActive={setIsActive} />
+          </DialogContent>
+        </Dialog>
+
         <Button
           onMouseOver={() => {
             setIsActive(true);

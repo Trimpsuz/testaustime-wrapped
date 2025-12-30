@@ -20,7 +20,7 @@ export default function Cursor({ isActive }: { isActive: boolean }) {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 rounded-full mix-blend-difference pointer-events-none"
+      className="fixed top-0 left-0 rounded-full mix-blend-difference pointer-events-none z-999"
       style={{
         x: smoothX,
         y: smoothY,

@@ -104,4 +104,5 @@ export type Data = {
     week: number[];
     year: number[];
   };
+  imageBase64?: string;
 };

@@ -79,7 +79,7 @@ export default function Home() {
               <AgeContainer data={data} />
               <ProjectsContainer data={data} setIsActive={setIsActive} />
               <ActivityClocksContainer data={data} setIsActive={setIsActive} />
-              <EndContainer setIsActive={setIsActive} />
+              <EndContainer data={data} setIsActive={setIsActive} />
             </>
           )}
         </div>

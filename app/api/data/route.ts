@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 import { type Entry, type Project, type Language, type Editor, type Host } from '@/lib/types';
+import generateImage from '@/lib/generateImage';
 
 const splitSession = (
   startDate: Date,
@@ -643,7 +644,7 @@ export async function GET(request: NextRequest) {
       })(),
     };
 
-    return NextResponse.json({
+    const finalData = {
       projects,
       languages,
       editors,
@@ -659,6 +660,11 @@ export async function GET(request: NextRequest) {
       totalLanguagesLastYear: parsedLastYear.totalLanguages,
       totalProjectsLastYear: parsedLastYear.totalProjects,
       activityClocks,
+    };
+
+    return NextResponse.json({
+      ...finalData,
+      imageBase64: await generateImage(finalData, year),
     });
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 404) {
