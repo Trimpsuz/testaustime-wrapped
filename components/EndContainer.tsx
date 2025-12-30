@@ -1,10 +1,10 @@
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import type { Data } from '@/lib/types';
+import { Share2 } from 'lucide-react';
 import { motion, useMotionTemplate, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import { Button } from './ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Share2 } from 'lucide-react';
-import type { Data } from '@/lib/types';
 import SvgToPng from './SvgToPng';
+import { Button } from './ui/button';
 
 export default function EndContainer({ data, setIsActive }: { data: Data; setIsActive: (isActive: boolean) => void }) {
   const parentRef = useRef(null);
