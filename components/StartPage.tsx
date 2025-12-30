@@ -60,7 +60,7 @@ function StartPage({ username, setUsername, onSearch, setIsActive }: { username:
         </div>
 
         {width > 1850 ? (
-          <div className="flex flex-row items-center gap-2">
+          <form className="flex flex-row items-center gap-2" action={onSearch}>
             <Input
               onMouseOver={() => {
                 setIsActive(true);
@@ -83,12 +83,11 @@ function StartPage({ username, setUsername, onSearch, setIsActive }: { username:
               }}
               size="xl"
               className="cursor-pointer"
-              onClick={onSearch}
               disabled={!username || !/^[0-9A-Za-z_]{2,32}$/.test(username)}
             >
               show me
             </Button>
-          </div>
+          </form>
         ) : (
           <div className="text-2xl">sorry, your browser is not supported or your screen is too small</div>
         )}
