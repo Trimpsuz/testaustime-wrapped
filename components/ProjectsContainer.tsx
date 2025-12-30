@@ -117,7 +117,8 @@ function ProjectContainer({
         </div>
       </div>
       <div className={`font-medium text-lg ${selectedProjectIndex && topProjectIndex === index ? 'text-background' : 'text-foreground/85'}`}>
-        {prettifyProgrammingLanguageName(project.top_language?.language).toLowerCase()}, {project.top_editor?.editor_name.toLowerCase()}, {project.top_host?.hostname.toLowerCase()}
+        {prettifyProgrammingLanguageName(project.top_language?.language).toLowerCase()}, {project.top_editor?.editor_name?.toLowerCase() ?? 'null'},{' '}
+        {project.top_host?.hostname?.toLowerCase() ?? 'null'}
       </div>
       <div className={`font-medium text-lg ${selectedProjectIndex && topProjectIndex === index ? 'text-background' : 'text-foreground/85'}`}>
         <span className={`font-bold ${selectedProjectIndex && topProjectIndex === index ? 'text-background' : 'text-foreground'}`}>{project.total_languages}</span> language

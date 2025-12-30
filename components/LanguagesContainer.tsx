@@ -371,16 +371,16 @@ const FlippableCard = ({
                   <div className="text-3xl font-bold">top</div>
                   <div className="text-nowrap text-ellipsis line-clamp-1">
                     <span className="font-semibold">project: </span>
-                    {sortedLanguages[5 - (i + 1)].top_project?.project_name.toLowerCase()}
+                    {sortedLanguages[5 - (i + 1)].top_project?.project_name?.toLowerCase() ?? 'null'}
                   </div>
                   <div className="text-nowrap text-ellipsis line-clamp-1">
                     <span className="font-semibold">editor: </span>
-                    {sortedLanguages[5 - (i + 1)].top_editor?.editor_name.toLowerCase()}
+                    {sortedLanguages[5 - (i + 1)].top_editor?.editor_name?.toLowerCase() ?? 'null'}
                   </div>
 
                   <div className="text-nowrap text-ellipsis line-clamp-1">
                     <span className="font-semibold">host: </span>
-                    {sortedLanguages[5 - (i + 1)].top_host?.hostname.toLowerCase()}
+                    {sortedLanguages[5 - (i + 1)].top_host?.hostname?.toLowerCase() ?? 'null'}
                   </div>
                 </div>
               </div>

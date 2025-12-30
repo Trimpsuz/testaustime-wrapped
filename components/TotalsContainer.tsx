@@ -99,21 +99,23 @@ export default function TotalsContainer({ data, setIsActive }: { data: Data; set
               </span>{' '}
               days.
             </motion.div>
-            <motion.div style={{ transform: transformSmallText2, opacity: opacitySmallText2 }} className="text-foreground/90 text-lg">
-              {data.totalDuration !== data.totalDurationLastYear && (
-                <span className="font-bold text-foreground">
-                  {data.totalDuration >= data.totalDurationLastYear
-                    ? Big((data.totalDuration / data.totalDurationLastYear - 1) * 100)
-                        .round(1)
-                        .toString()
-                    : Big((1 - data.totalDuration / data.totalDurationLastYear) * 100)
-                        .round(1)
-                        .toString()}
-                </span>
-              )}{' '}
-              {data.totalDuration !== data.totalDurationLastYear && <span>{data.totalDuration >= data.totalDurationLastYear ? 'percent more' : 'percent less'}</span>}{' '}
-              {data.totalDuration !== data.totalDurationLastYear ? 'compared to last year.' : 'same as last year!'}
-            </motion.div>
+            {data.totalDurationLastYear !== 0 && (
+              <motion.div style={{ transform: transformSmallText2, opacity: opacitySmallText2 }} className="text-foreground/90 text-lg">
+                {data.totalDuration !== data.totalDurationLastYear && (
+                  <span className="font-bold text-foreground">
+                    {data.totalDuration >= data.totalDurationLastYear
+                      ? Big((data.totalDuration / data.totalDurationLastYear - 1) * 100)
+                          .round(1)
+                          .toString()
+                      : Big((1 - data.totalDuration / data.totalDurationLastYear) * 100)
+                          .round(1)
+                          .toString()}
+                  </span>
+                )}{' '}
+                {data.totalDuration !== data.totalDurationLastYear && <span>{data.totalDuration >= data.totalDurationLastYear ? 'percent more' : 'percent less'}</span>}{' '}
+                {data.totalDuration !== data.totalDurationLastYear ? 'compared to last year.' : 'same as last year!'}
+              </motion.div>
+            )}
           </div>
         </motion.div>
         <motion.div ref={sideRef} style={{ transform: transformSide, opacity }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 items-start justify-center">
@@ -176,7 +178,7 @@ function SplitItem({
       <div>
         {arr.length - 1 === index ? 'and' : ''} <span className="font-semibold text-foreground">{item.value}</span> {item.value > 1 ? item.name + 's' : item.name}
         {'. '}
-        {item.value !== item.valueLastYear && (
+        {item.value !== item.valueLastYear && item.valueLastYear !== 0 && (
           <span className="font-semibold text-foreground">
             {item.value >= item.valueLastYear ? '+' : '-'}
             {item.value >= item.valueLastYear
