@@ -25,7 +25,7 @@ export const normalizeProgrammingLanguageName = (name: string | undefined | null
 };
 
 export const prettifyProgrammingLanguageName = (name: string | undefined | null) => {
-  if (!name || isStringNull(name)) return 'null';
+  if (!name || isStringNull(name)) return 'Unknown';
 
   return (
     {
