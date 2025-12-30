@@ -668,7 +668,7 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 404) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      return NextResponse.json({ error: 'User not found. Make sure you spelt it correctly and your profile is public.' }, { status: 404 });
     }
 
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
